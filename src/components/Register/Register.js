@@ -27,6 +27,23 @@ class Register extends React.Component {
         this.setState({ password: event.target.value });
     }
 
+    onRegister = () => {
+        const {name, email, password, organization} = this.state; 
+        fetch("https://frij-api.herokuapp.com/api/users", {
+            method: "post",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({
+                name, email, password, organization
+            })
+        })
+            .then(res => res.json())
+            .then(res => {
+                this.props.onSaveToken(res.token);
+                this.props.onRouteChange("dashboard");
+            })
+            .catch(console.log);
+    }
+
     render() {
         return (
             <article className="br3 shadow-5 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center">
@@ -52,7 +69,7 @@ class Register extends React.Component {
                             </div>
                         </fieldset>
                         <div className="" style={{ display: "flex", justifyContent: "center" }}>
-                            <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" onClick={() => this.props.onRouteChange("dashboard")} />
+                            <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" onClick={this.onRegister} />
                         </div>
                     </div>
                 </main>

@@ -8,7 +8,8 @@ class App extends React.Component {
   constructor() {
     super(); 
     this.state = {
-      route: "signin"
+      route: "signin",
+      token: ""
     }
   }
 
@@ -16,12 +17,16 @@ class App extends React.Component {
     this.setState({route});
   }
 
+  onSaveToken = (token) => {
+    this.setState({token});
+  }
+
   render() {
     const displayContent = () => {
       if (this.state.route === "signin") {
-        return <SignIn onRouteChange={this.onRouteChange}/>
+        return <SignIn onRouteChange={this.onRouteChange} onSaveToken={this.onSaveToken}/>
       } else if (this.state.route === "register") {
-        return <Register onRouteChange={this.onRouteChange} />
+        return <Register onRouteChange={this.onRouteChange} onSaveToken={this.onSaveToken}/>
       } else if (this.state.route === "dashboard") {
         return <div></div>
       } 
