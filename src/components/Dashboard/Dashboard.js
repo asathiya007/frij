@@ -31,13 +31,12 @@ class Dashboard extends React.Component {
         return (
             <div>
                 <div className="tc">
-                    <h1>Expired Items</h1>
+                    <h1>Expiration Dashboard</h1>
                 </div>
                 <Scroll>
                     <CardList contents={inventory} />
                 </Scroll>
             </div>
-            
         ); 
     }
 } 
