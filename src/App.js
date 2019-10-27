@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from "./components/Navigation/Navigation";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 class App extends React.Component {
   constructor() {
@@ -11,6 +12,10 @@ class App extends React.Component {
       route: "signin",
       token: ""
     }
+  }
+
+  componentDidMount() {
+    fetch("https://frij-api.herokuapp.com/test"); 
   }
 
   onRouteChange = (route) => {
@@ -28,7 +33,7 @@ class App extends React.Component {
       } else if (this.state.route === "register") {
         return <Register onRouteChange={this.onRouteChange} onSaveToken={this.onSaveToken}/>
       } else if (this.state.route === "dashboard") {
-        return <div></div>
+        return <Dashboard token={this.state.token}/>
       } 
     }
 
@@ -36,7 +41,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Navigation route={route} onRouteChange={this.onRouteChange}/>
+        <Navigation route={route} onRouteChange={this.onRouteChange} onSaveToken={this.onSaveToken}/>
         {displayContent()}
       </div>
     );

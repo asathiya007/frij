@@ -29,28 +29,30 @@ class Register extends React.Component {
 
     onRegister = () => {
         const {name, email, password, organization} = this.state; 
-        fetch("https://frij-api.herokuapp.com/api/users", {
-            method: "post",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({
-                name, email, password, organization
+        if (name !== "" && email !== "" && password !== "" && organization !== "") {
+            fetch("https://frij-api.herokuapp.com/api/users", {
+                method: "post",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name, email, password, organization
+                })
             })
-        })
-            .then(res => res.json())
-            .then(res => {
-                this.props.onSaveToken(res.token);
-                this.props.onRouteChange("dashboard");
-            })
-            .catch(console.log);
+                .then(res => res.json())
+                .then(res => {
+                    this.props.onSaveToken(res.token);
+                    this.props.onRouteChange("dashboard");
+                })
+                .catch(console.log);
+        }
     }
 
     render() {
         return (
-            <article className="br3 shadow-5 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center">
+            <article className="br3 shadow-5 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center bg-white">
                 <main className="pa4 black-80">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                            <legend className="f1 fw6 ph0 mh0 tc">Register</legend>
+                            <legend className="f1 fw6 ph0 mh0 tc">frij</legend>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                                 <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name" id="name" onChange={this.onNameChange} />
