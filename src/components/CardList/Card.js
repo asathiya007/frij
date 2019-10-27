@@ -23,7 +23,7 @@ const Card = ({ name, expDate, price}) => {
     }
 
     return (
-        <article class="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center bg-white">
+        <article class="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center bg-white grow">
             <img src={image} height="125px" width="100px" className="db w-100 br2 br--top" alt="food"/>
             <div class="pa2 ph3-ns pb3-ns">
                 <div class="dt w-100 mt1">

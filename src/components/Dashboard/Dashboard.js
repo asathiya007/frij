@@ -59,18 +59,10 @@ class Dashboard extends React.Component {
         const {name, organization, avatar, expired, expiredCost, willExpire, futureCost} = this.state; 
 
         return (
-            // <div>
-            //     <div className="tc">
-            //         <h1>Expired today - ${this.stat</h1>
-            //     </div>
-            //     <Scroll>
-            //         <CardList contents={inventory} />
-            //     </Scroll>
-            // </div>
+            // <img src={avatar} alt="gravatar" height="100px"/>
             <div>
-                <div style={{display: "flex", justifyContent: "space-around"}}>
-                    <img src={avatar.substring(7)} alt="gravatar"/>
-                    <h3>Welcome, {name} ({organization})!</h3>
+                <div style={{display: "flex", justifyContent: "center"}}>
+                    <h1>Welcome, {name} and {organization}!</h1>
                 </div>
                 <div>
                     <div className="tc f3">
