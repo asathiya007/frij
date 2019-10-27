@@ -6,12 +6,17 @@ class Register extends React.Component {
         this.state = {
             name: "",
             email: "",
-            password: ""
+            password: "",
+            organization: ""
         }
     }
 
     onNameChange = (event) => {
         this.setState({ name: event.target.value });
+    }
+
+    onOrgChange = (event) => {
+        this.setState({ organization: event.target.value });
     }
 
     onEmailChange = (event) => {
@@ -32,6 +37,10 @@ class Register extends React.Component {
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                                 <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name" id="name" onChange={this.onNameChange} />
+                            </div>
+                            <div className="mt3">
+                                <label className="db fw6 lh-copy f6" htmlFor="organization">Organization</label>
+                                <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="organization" id="organization" onChange={this.onOrgChange} />
                             </div>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
