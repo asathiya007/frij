@@ -1,13 +1,14 @@
 import React from "react";
 import CardList from "../CardList/CardList";
 import Scroll from "../Scroll/Scroll";
+import Tilt from 'react-tilt';
+import "./Dashboard.css";
 
 class Dashboard extends React.Component {
     constructor() {
         super(); 
         this.state = {
             name: "",
-            organization: "",
             avatar: "",
             expired: [],
             expiredCost: 0,
@@ -25,8 +26,8 @@ class Dashboard extends React.Component {
             .then(res => res.json())
             .then(res => {
                 console.log(res);
-                const {name, organization, avatar} = res;
-                this.setState({name, organization, avatar});
+                const {name, avatar} = res;
+                this.setState({name, avatar});
             })
             .catch(console.log);
 
@@ -56,13 +57,18 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        const {name, organization, avatar, expired, expiredCost, willExpire, futureCost} = this.state; 
+        const {name, avatar, expired, expiredCost, willExpire, futureCost} = this.state; 
 
         return (
             // <img src={avatar} alt="gravatar" height="100px"/>
             <div>
-                <div style={{display: "flex", justifyContent: "center"}}>
-                    <h1>Welcome, {name} and {organization}!</h1>
+                <Tilt className="Tilt" options={{ max: 55 }} style={{ height: 170, width: 170 }} >
+                    <div className="Tilt-inner"> 
+                        <img src={avatar} alt="gravatar" height="100%" width="100%" className="br3"/>
+                    </div>
+                </Tilt>
+                <div style={{display: "flex", justifyContent: "center"}} className="mt0 f3">
+                    <h1>Welcome to Frij Dashboard, {name}!</h1>
                 </div>
                 <div>
                     <div className="tc f3">
